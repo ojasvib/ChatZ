@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,14 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            <service
-                android:name=".service.ChatZNotificationService"
-                android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
-                android:exported="true"> <!-- Add this line -->
-                <intent-filter>
-                    <action android:name="android.service.notification.NotificationListenerService" />
-                </intent-filter>
-            </service>
+        <service
+            android:name=".service.ChatZNotificationService"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:exported="true"> <!-- Add this line -->
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+        <receiver android:name=".receiver.ReplyReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.ojasvi.chatz.REPLY_ACTION" />
+            </intent-filter>
+        </receiver>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
