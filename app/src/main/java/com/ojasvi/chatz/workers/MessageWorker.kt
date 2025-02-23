@@ -1,4 +1,4 @@
-package com.chatz.worker
+package com.ojasvi.chatz.workers
 
 import android.app.PendingIntent
 import android.app.RemoteInput
